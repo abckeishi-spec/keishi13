@@ -1,0 +1,670 @@
+/* Grant Insight Jグランツ・インポーター 改善版 管理画面スタイル */
+
+/* 基本レイアウト */
+.giji-improved-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 統計表示 */
+.giji-improved-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.giji-improved-stat-box {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    min-width: 160px;
+    flex: 1;
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+    transition: all 0.3s ease;
+}
+
+.giji-improved-stat-box:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    transform: translateY(-2px);
+}
+
+.giji-improved-stat-box h3 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.giji-improved-stat-number {
+    font-size: 36px;
+    font-weight: bold;
+    color: #0073aa;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+/* アクションセクション */
+.giji-improved-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.giji-improved-action-section {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+    transition: all 0.3s ease;
+}
+
+.giji-improved-action-section:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+}
+
+.giji-improved-action-section h3 {
+    margin: 0 0 12px 0;
+    font-size: 18px;
+    color: #23282d;
+    font-weight: 600;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 8px;
+}
+
+.giji-improved-action-section p {
+    margin: 0 0 16px 0;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.giji-improved-action-section label {
+    display: inline-block;
+    margin-right: 12px;
+    font-weight: 600;
+    color: #23282d;
+}
+
+.giji-improved-action-section input[type="number"],
+.giji-improved-action-section input[type="text"] {
+    margin-right: 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+}
+
+.giji-improved-action-section input[type="number"] {
+    width: 100px;
+}
+
+/* ステータス表示 */
+.giji-improved-status {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+    margin-bottom: 20px;
+}
+
+.giji-improved-status h3 {
+    margin: 0 0 16px 0;
+    font-size: 18px;
+    color: #23282d;
+    font-weight: 600;
+    border-bottom: 2px solid #46b450;
+    padding-bottom: 8px;
+}
+
+.giji-improved-status p {
+    margin: 8px 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+.giji-improved-status strong {
+    color: #23282d;
+}
+
+/* 結果表示 */
+.giji-improved-result {
+    margin-top: 16px;
+    padding: 16px;
+    border-radius: 6px;
+    background: #f9f9f9;
+    border-left: 4px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.giji-improved-result.loading {
+    background: #e7f3ff;
+    border-left-color: #0073aa;
+}
+
+.giji-improved-result.success {
+    background: #d4edda;
+    border-left-color: #46b450;
+    color: #155724;
+}
+
+.giji-improved-result.error {
+    background: #f8d7da;
+    border-left-color: #dc3545;
+    color: #721c24;
+}
+
+.giji-improved-result .notice {
+    margin: 12px 0;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.giji-improved-result ul {
+    margin: 12px 0;
+    padding-left: 24px;
+}
+
+.giji-improved-result li {
+    margin: 6px 0;
+    line-height: 1.5;
+}
+
+.giji-improved-result li.success {
+    color: #46b450;
+    font-weight: 500;
+}
+
+.giji-improved-result li.error {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+.giji-improved-result li.duplicate {
+    color: #f57c00;
+    font-weight: 500;
+}
+
+/* ボタンスタイル */
+.giji-improved-action-section .button {
+    margin-top: 8px;
+    margin-right: 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.giji-improved-action-section .button-primary {
+    background: #0073aa;
+    border-color: #0073aa;
+    box-shadow: 0 2px 4px rgba(0,115,170,.2);
+}
+
+.giji-improved-action-section .button-primary:hover {
+    background: #005a87;
+    border-color: #005a87;
+    box-shadow: 0 4px 8px rgba(0,115,170,.3);
+    transform: translateY(-1px);
+}
+
+.giji-improved-action-section .button-secondary {
+    background: #f7f7f7;
+    border-color: #cccccc;
+    color: #555;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.giji-improved-action-section .button-secondary:hover {
+    background: #fafafa;
+    border-color: #999;
+    box-shadow: 0 4px 8px rgba(0,0,0,.15);
+    transform: translateY(-1px);
+}
+
+.giji-improved-action-section .button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* プロンプト管理ページ */
+.giji-improved-prompt-info {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
+
+.giji-improved-prompt-info h3 {
+    margin: 0 0 16px 0;
+    color: #23282d;
+    font-weight: 600;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 8px;
+}
+
+.giji-improved-prompt-info ul {
+    margin: 12px 0;
+    padding-left: 24px;
+    columns: 2;
+    column-gap: 30px;
+}
+
+.giji-improved-prompt-info li {
+    margin: 8px 0;
+    break-inside: avoid;
+    line-height: 1.5;
+}
+
+.giji-improved-prompt-info code {
+    background: #f1f1f1;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9em;
+    color: #d63384;
+}
+
+/* ログページ */
+.giji-improved-log-stats {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
+
+.giji-improved-log-stats h3 {
+    margin: 0 0 16px 0;
+    color: #23282d;
+    font-weight: 600;
+}
+
+.giji-improved-log-stat-item {
+    display: inline-block;
+    margin-right: 20px;
+    padding: 6px 12px;
+    background: #f8f9fa;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.giji-improved-log-actions {
+    margin-bottom: 20px;
+}
+
+.giji-improved-log-actions .button {
+    margin-right: 10px;
+    border-radius: 6px;
+}
+
+.giji-improved-log-viewer {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+    overflow: hidden;
+}
+
+.giji-improved-log-viewer table {
+    margin: 0;
+    border-radius: 8px;
+}
+
+.giji-improved-log-viewer th {
+    background: #f8f9fa;
+    color: #495057;
+    font-weight: 600;
+    padding: 16px;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.giji-improved-log-viewer td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f3f4;
+    vertical-align: top;
+}
+
+.log-level-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.log-level-debug { background: #e9ecef; color: #6c757d; }
+.log-level-info { background: #d1ecf1; color: #0c5460; }
+.log-level-warning { background: #fff3cd; color: #856404; }
+.log-level-error { background: #f8d7da; color: #721c24; }
+.log-level-critical { background: #d1ecf1; color: #721c24; }
+
+.log-level-debug tr { background: #f8f9fa; }
+.log-level-error tr { background: #fff5f5; }
+.log-level-warning tr { background: #fffbf0; }
+
+/* 統計ページ */
+.giji-improved-statistics {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
+
+.giji-improved-statistics h2 {
+    margin: 0 0 20px 0;
+    color: #23282d;
+    font-weight: 600;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 10px;
+}
+
+.giji-improved-statistics table {
+    margin-bottom: 30px;
+}
+
+.giji-improved-statistics th,
+.giji-improved-statistics td {
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.giji-improved-statistics th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+}
+
+.status-completed {
+    color: #46b450;
+    font-weight: 600;
+}
+
+.status-failed {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* フォームスタイル */
+.form-table th {
+    width: 220px;
+    padding: 20px 10px 20px 0;
+    vertical-align: top;
+}
+
+.form-table td {
+    padding: 15px 10px;
+}
+
+.form-table textarea.large-text {
+    width: 100%;
+    max-width: 650px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    padding: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+}
+
+.form-table input[type="text"].regular-text,
+.form-table input[type="password"].regular-text,
+.form-table input[type="url"].regular-text {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    padding: 10px 12px;
+    width: 25em;
+}
+
+.form-table select {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    min-width: 200px;
+}
+
+/* API設定行の表示制御 */
+.api-key-row {
+    transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+.api-key-row.hidden {
+    display: none;
+}
+
+/* APIプロバイダー設定 */
+.ai-provider-hint {
+    background: #e7f3ff;
+    border: 1px solid #b3d7ff;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #0066cc;
+}
+
+/* 通知スタイル */
+.notice {
+    border-left: 4px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    margin: 8px 0 16px;
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+}
+
+.notice.notice-success {
+    border-left-color: #46b450;
+    background: #d4edda;
+    color: #155724;
+}
+
+.notice.notice-error {
+    border-left-color: #dc3545;
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.notice.notice-warning {
+    border-left-color: #ffc107;
+    background: #fff3cd;
+    color: #856404;
+}
+
+.notice.notice-info {
+    border-left-color: #17a2b8;
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+/* 進捗インジケーター */
+.giji-improved-progress {
+    width: 100%;
+    height: 6px;
+    background: #f1f3f4;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.giji-improved-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #0073aa, #005a87);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 3px;
+}
+
+/* ローディングアニメーション */
+.giji-improved-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #0073aa;
+    border-radius: 50%;
+    animation: giji-improved-spin 1s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes giji-improved-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1200px) {
+    .giji-improved-dashboard {
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .giji-improved-stats {
+        flex-direction: column;
+    }
+    
+    .giji-improved-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .giji-improved-action-section input[type="number"],
+    .giji-improved-action-section input[type="text"] {
+        width: 100%;
+        margin: 5px 0;
+        display: block;
+    }
+    
+    .giji-improved-action-section button {
+        width: 100%;
+        margin-top: 12px;
+    }
+    
+    .giji-improved-prompt-info ul {
+        columns: 1;
+    }
+    
+    .form-table {
+        width: 100%;
+    }
+    
+    .form-table th,
+    .form-table td {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 10px 0;
+    }
+    
+    .form-table th {
+        font-weight: 600;
+        color: #23282d;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 8px;
+    }
+    
+    .form-table input[type="text"].regular-text,
+    .form-table input[type="password"].regular-text,
+    .form-table input[type="url"].regular-text,
+    .form-table textarea.large-text,
+    .form-table select {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .giji-improved-stat-box {
+        min-width: auto;
+        margin-bottom: 16px;
+    }
+    
+    .giji-improved-log-viewer {
+        overflow-x: auto;
+    }
+    
+    .giji-improved-log-viewer table {
+        min-width: 600px;
+    }
+}
+
+/* ダークモード対応（WordPress 5.7+） */
+@media (prefers-color-scheme: dark) {
+    .giji-improved-stat-box,
+    .giji-improved-action-section,
+    .giji-improved-status,
+    .giji-improved-prompt-info,
+    .giji-improved-log-stats,
+    .giji-improved-log-viewer,
+    .giji-improved-statistics {
+        background: #1e1e1e;
+        border-color: #3c434a;
+        color: #e2e4e7;
+    }
+    
+    .giji-improved-stat-box h3,
+    .giji-improved-action-section h3,
+    .giji-improved-status h3,
+    .giji-improved-prompt-info h3,
+    .giji-improved-statistics h2 {
+        color: #e2e4e7;
+    }
+    
+    .giji-improved-action-section p,
+    .giji-improved-status p,
+    .giji-improved-prompt-info p {
+        color: #a7aaad;
+    }
+    
+    .form-table input,
+    .form-table textarea,
+    .form-table select {
+        background: #2c3338;
+        border-color: #3c434a;
+        color: #e2e4e7;
+    }
+    
+    .giji-improved-result {
+        background: #2c3338;
+        border-left-color: #3c434a;
+    }
+}
+
+/* アクセシビリティ */
+.giji-improved-action-section button:focus,
+.form-table input:focus,
+.form-table textarea:focus,
+.form-table select:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+/* 印刷スタイル */
+@media print {
+    .giji-improved-actions,
+    .giji-improved-log-actions,
+    .button {
+        display: none;
+    }
+    
+    .giji-improved-dashboard,
+    .giji-improved-statistics {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
