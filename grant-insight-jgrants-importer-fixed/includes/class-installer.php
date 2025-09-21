@@ -44,9 +44,8 @@ class GIJI_Fixed_Installer {
         } catch (Exception $e) {
             error_log('Grant Insight JGrants Importer Fixed activation error: ' . $e->getMessage());
             
-            // Deactivate the plugin on activation error
-            deactivate_plugins(plugin_basename(__FILE__));
-            wp_die('Plugin activation failed: ' . $e->getMessage());
+            // Don't deactivate during activation - just log the error
+            // User can check logs for details
         }
     }
     

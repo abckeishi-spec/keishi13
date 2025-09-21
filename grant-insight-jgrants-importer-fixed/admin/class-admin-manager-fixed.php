@@ -7,16 +7,20 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class GIJI_Fixed_Admin_Manager {
+class GIJI_Fixed_Admin_Manager extends GIJI_Singleton_Base {
     
     private $automation_controller;
     private $logger;
     private $security_manager;
     
-    public function __construct($automation_controller, $logger, $security_manager) {
-        $this->automation_controller = $automation_controller;
-        $this->logger = $logger;
-        $this->security_manager = $security_manager;
+    protected function init() {
+        // 依存関係の初期化
+        $this->security_manager = GIJI_Fixed_Security_Manager::get_instance();
+        $this->logger = GIJI_Fixed_Logger::get_instance();
+        
+        if (class_exists('GIJI_Fixed_Automation_Controller')) {
+            $this->automation_controller = GIJI_Fixed_Automation_Controller::get_instance();
+        }
         
         // 管理画面フックの登録
         add_action('admin_menu', array($this, 'add_admin_menu'));
