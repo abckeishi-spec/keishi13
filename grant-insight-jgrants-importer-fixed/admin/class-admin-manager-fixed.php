@@ -14,12 +14,23 @@ class GIJI_Fixed_Admin_Manager extends GIJI_Singleton_Base {
     private $security_manager;
     
     protected function init() {
+        // デバッグログ追加
+        error_log('GIJI Fixed: Admin Manager init() called');
+        
         // 依存関係の初期化
-        $this->security_manager = GIJI_Fixed_Security_Manager::get_instance();
-        $this->logger = GIJI_Fixed_Logger::get_instance();
+        if (class_exists('GIJI_Fixed_Security_Manager')) {
+            $this->security_manager = GIJI_Fixed_Security_Manager::get_instance();
+            error_log('GIJI Fixed: Security Manager initialized');
+        }
+        
+        if (class_exists('GIJI_Fixed_Logger')) {
+            $this->logger = GIJI_Fixed_Logger::get_instance();
+            error_log('GIJI Fixed: Logger initialized');
+        }
         
         if (class_exists('GIJI_Fixed_Automation_Controller')) {
             $this->automation_controller = GIJI_Fixed_Automation_Controller::get_instance();
+            error_log('GIJI Fixed: Automation Controller initialized');
         }
         
         // 管理画面フックの登録
@@ -41,7 +52,9 @@ class GIJI_Fixed_Admin_Manager extends GIJI_Singleton_Base {
      * 管理画面メニューの追加
      */
     public function add_admin_menu() {
-        add_menu_page(
+        error_log('GIJI Fixed: add_admin_menu() called');
+        
+        $menu_page = add_menu_page(
             'Grant Insight Jグランツ・インポーター 修正版',
             'Jグランツ修正版',
             'manage_options',
@@ -50,6 +63,8 @@ class GIJI_Fixed_Admin_Manager extends GIJI_Singleton_Base {
             'dashicons-money-alt',
             30
         );
+        
+        error_log('GIJI Fixed: Menu page added: ' . $menu_page);
         
         add_submenu_page(
             'grant-insight-jgrants-importer-fixed',

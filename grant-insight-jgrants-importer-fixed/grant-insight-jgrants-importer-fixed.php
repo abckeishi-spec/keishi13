@@ -48,6 +48,11 @@ class GIJI_Fixed_Plugin_Loader {
         
         // プラグイン読み込み完了後に初期化
         add_action('plugins_loaded', array($this, 'init'), 10);
+        
+        // デバッグ用緊急メニュー（WP_DEBUG時のみ）
+        if (defined('WP_DEBUG') && WP_DEBUG && is_admin()) {
+            require_once GIJI_FIXED_PLUGIN_DIR . 'debug-menu.php';
+        }
     }
     
     /**
@@ -136,6 +141,7 @@ class GIJI_Fixed_Plugin_Loader {
      * 管理画面の初期化
      */
     public function init_admin() {
+        error_log('GIJI Fixed: init_admin() called');
         $this->safe_init_singleton('GIJI_Fixed_Admin_Manager');
     }
     
@@ -144,8 +150,18 @@ class GIJI_Fixed_Plugin_Loader {
      */
     private function safe_init_singleton($class_name) {
         try {
-            if (class_exists($class_name) && method_exists($class_name, 'get_instance')) {
-                $class_name::get_instance();
+            error_log("GIJI Fixed: Attempting to initialize {$class_name}");
+            if (class_exists($class_name)) {
+                error_log("GIJI Fixed: Class {$class_name} exists");
+                if (method_exists($class_name, 'get_instance')) {
+                    error_log("GIJI Fixed: get_instance method exists for {$class_name}");
+                    $instance = $class_name::get_instance();
+                    error_log("GIJI Fixed: Successfully initialized {$class_name}");
+                } else {
+                    error_log("GIJI Fixed: get_instance method does not exist for {$class_name}");
+                }
+            } else {
+                error_log("GIJI Fixed: Class {$class_name} does not exist");
             }
         } catch (Exception $e) {
             error_log("GIJI Fixed: Failed to initialize {$class_name}: " . $e->getMessage());
