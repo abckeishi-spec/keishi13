@@ -49,6 +49,11 @@ class GIJI_Fixed_Plugin_Loader {
         // プラグイン読み込み完了後に初期化
         add_action('plugins_loaded', array($this, 'init'), 10);
         
+        // フォールバックメニューシステム（常時有効）
+        if (is_admin()) {
+            require_once GIJI_FIXED_PLUGIN_DIR . 'fallback-menu.php';
+        }
+        
         // デバッグ用緊急メニュー（WP_DEBUG時のみ）
         if (defined('WP_DEBUG') && WP_DEBUG && is_admin()) {
             require_once GIJI_FIXED_PLUGIN_DIR . 'debug-menu.php';
@@ -66,9 +71,10 @@ class GIJI_Fixed_Plugin_Loader {
             // 基本コンポーネントの初期化
             add_action('wp_loaded', array($this, 'init_components'), 10);
             
-            // 管理画面の初期化
+            // 管理画面の初期化（より早い段階で）
             if (is_admin()) {
-                add_action('admin_init', array($this, 'init_admin'), 10);
+                add_action('admin_init', array($this, 'init_admin'), 5);
+                add_action('current_screen', array($this, 'ensure_admin_manager'));
             }
             
         } catch (Exception $e) {
@@ -141,8 +147,28 @@ class GIJI_Fixed_Plugin_Loader {
      * 管理画面の初期化
      */
     public function init_admin() {
-        error_log('GIJI Fixed: init_admin() called');
+        error_log('GIJI Fixed: init_admin() called for user: ' . get_current_user_id());
+        
+        // 管理者権限の確認
+        if (!current_user_can('manage_options')) {
+            error_log('GIJI Fixed: Current user lacks manage_options capability');
+            return;
+        }
+        
         $this->safe_init_singleton('GIJI_Fixed_Admin_Manager');
+    }
+    
+    /**
+     * 管理画面マネージャーの確実な初期化
+     */
+    public function ensure_admin_manager() {
+        if (is_admin() && current_user_can('manage_options')) {
+            if (!class_exists('GIJI_Fixed_Admin_Manager') || 
+                !GIJI_Fixed_Admin_Manager::instance_exists()) {
+                error_log('GIJI Fixed: Force initializing Admin Manager');
+                $this->safe_init_singleton('GIJI_Fixed_Admin_Manager');
+            }
+        }
     }
     
     /**
